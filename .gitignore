@@ -32,3 +32,5 @@
 *.app
 /.vs
 /Checkers/.vs/Checkers
+/Checkers/Checkers/x64/
+/Checkers/x64/
