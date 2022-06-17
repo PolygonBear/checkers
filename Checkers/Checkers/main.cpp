@@ -9,6 +9,19 @@ enum Field
     eEmpty
 };
 
+char FieldAsSymbol(const Field field)
+{
+    switch (field)
+    {
+    case Field::eWhiteChess:
+        return 'W';
+    case Field::eBlackChess:
+        return 'B';
+    case Field::eEmpty:
+        return ' ';
+    }
+}
+
 int main()
 {
     std::cout << "Select side: 1. white, 2. black: ";
@@ -31,12 +44,14 @@ int main()
         else
         {
             std::cout << "Your enter invalid choise!";
+            return 1;
         }
     }
 
     Field chessField[8][8];
 
-    std::cout << std::format(R"(     A     B     C     D     E     F     G     H
+    std::cout << std::format(R"(
+     A     B     C     D     E     F     G     H
   #################################################
   #     #     #     #     #     #     #     #     #
 8 #     #     #     #     #     #     #     #     #
