@@ -4,21 +4,21 @@
 
 enum Field
 {
+    eEmpty,
     eWhiteChess,
-    eBlackChess,
-    eEmpty
+    eBlackChess
 };
 
 char FieldAsSymbol(const Field field)
 {
     switch (field)
     {
+    case Field::eEmpty:
+        return ' ';
     case Field::eWhiteChess:
         return 'W';
     case Field::eBlackChess:
         return 'B';
-    case Field::eEmpty:
-        return ' ';
     }
 }
 
@@ -47,7 +47,7 @@ int main()
             std::cout << "Your enter invalid choise!" << std::endl;
     }
 
-    Field chessField[8][8];
+    Field chessField[8][8] = {};
 
     std::cout << std::format(R"(
      A     B     C     D     E     F     G     H
