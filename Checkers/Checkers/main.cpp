@@ -1,11 +1,13 @@
-enum field
+enum Field
 {
-    WhiteMesh,
-    BlackMesh,
-    Empty
+    eWhiteChess,
+    eBlackChess,
+    eEmpty
 };
 
 int main()
 {
+    Field chessField[8][8];
+
     return 0;
 }
