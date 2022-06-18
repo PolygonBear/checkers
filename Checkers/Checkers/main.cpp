@@ -31,16 +31,16 @@ int main()
     {
         std::cout << "Select side: 1. White, 2. Black: ";
 
-        char side = 0;
+        std::string side = "";
         std::cin >> side;
 
-        if (side == '1')
+        if (side[0] == '1')
         {
             playerSide = Field::eWhiteChess;
             enemySide = Field::eBlackChess;
             break;
         }
-        else if (side == '2')
+        else if (side[0] == '2')
         {
             playerSide = Field::eBlackChess;
             enemySide = Field::eWhiteChess;
