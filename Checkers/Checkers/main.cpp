@@ -54,9 +54,26 @@ int main()
     Field chessField[length][length] = {};
 
     for (size_t x = length - 1; x > length - 4; x--)
+    {
         for (int y = length - 1; y >= 0; y--)
+        {
             if ((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))
+            {
                 chessField[x][y] = playerSide;
+            }
+        }          
+    }
+        
+    for (size_t i = 0; i < 3; ++i)
+    {
+        for (int y = 0; y < length; ++y)
+        {
+            if ((i % 2 == 0 && y % 2 != 0) || (i % 2 != 0 && y % 2 == 0))
+            {
+                chessField[i][y] = enemySide;
+            }
+        }
+    }
 
     std::cout << std::format(R"(
      A     B     C     D     E     F     G     H
