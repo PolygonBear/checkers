@@ -116,7 +116,24 @@ int main()
         std::cout << "Select field: ";
 
         std::string targetField;
+        
         std::cin >> targetField;
+        
+        if (targetField.length() == 2 && (targetField[0] >= 'a' && targetField[0] <= 'h') && (targetField[1] >= '1' && targetField[1] <= '8'))
+        {
+            chessField[targetField[0]][targetField[1]];
+
+            std::cout << chessField[static_cast<int>(targetField[0]) - 97][static_cast<int>(targetField[1]) - 49];
+            break;
+        }
+        else if (targetField.length() == 2 && (targetField[0] >= 'A' && targetField[0] <= 'H') && (targetField[1] >= '1' && targetField[1] <= '8'))
+        {
+            chessField[targetField[0]][targetField[1]];
+
+            std::cout << chessField[static_cast<int>(targetField[0]) - 65][static_cast<int>(targetField[1]) - 49];
+            break;
+        }
+
     }
 
     return 0;
