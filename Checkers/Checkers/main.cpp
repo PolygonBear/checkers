@@ -24,8 +24,8 @@ char FieldAsSymbol(const Field field)
 
 int main()
 {
-    Field playerSide = eEmpty;
-    Field enemySide = eEmpty;
+    Field playerSide = Field::eEmpty;
+    Field enemySide = Field::eEmpty;
 
     while (true)
     {
@@ -36,14 +36,14 @@ int main()
 
         if (side == '1')
         {
-            playerSide = eWhiteChess;
-            enemySide = eBlackChess;
+            playerSide = Field::eWhiteChess;
+            enemySide = Field::eBlackChess;
             break;
         }
         else if (side == '2')
         {
-            playerSide = eBlackChess;
-            enemySide = eWhiteChess;
+            playerSide = Field::eBlackChess;
+            enemySide = Field::eWhiteChess;
             break;
         }
         else
@@ -53,56 +53,11 @@ int main()
     const int length = 8;
     Field chessField[length][length] = {};
 
-    for (int i = 0; i < 3; ++i)
-    {
-        int y;
-        for (y = 0; y < length; ++y)
-        {
-            if ((i % 2 != 0) && (y % 2 != 0))
-            {
-                chessField[i][y] = enemySide;
-            }
-        }
-    }
+    for (size_t x = length - 1; x > length - 4; x--)
+        for (int y = length - 1; y >= 0; y--)
+            if ((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))
+                chessField[x][y] = playerSide;
 
-    for (int i = 0; i < 3; ++i)
-    {
-        int y;
-        for (y = 0; y < length; ++y)
-        {
-            if ((i % 2 == 0) && (y % 2 == 0))
-            {
-                chessField[i][y] = enemySide;
-            }
-        }
-    }
-
-
-    for (int i = length; i > 3; --i)
-    {
-        int y;
-        for (y = length; y < 0; --y)
-        {
-            if ((i % 2 != 0) && (y % 2 != 0))
-            {
-                chessField[i][y] = playerSide;
-            }
-        }
-    }
-
-    for (int i = length; i > 3; --i)
-    {
-        int y;
-        for (y = length; y > 0; --y)
-        {
-            if ((i % 2 == 0) && (y % 2 == 0))
-            {
-                chessField[i][y] = playerSide;
-            }
-        }
-    }
-
-  
     std::cout << std::format(R"(
      A     B     C     D     E     F     G     H
   #################################################
