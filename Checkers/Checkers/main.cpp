@@ -25,6 +25,7 @@ char FieldAsSymbol(const Field field)
 int main()
 {
     Field playerSide = eEmpty;
+    Field enemySide = eEmpty;
 
     while (true)
     {
@@ -36,19 +37,72 @@ int main()
         if (side == '1')
         {
             playerSide = eWhiteChess;
+            enemySide = eBlackChess;
             break;
         }
         else if (side == '2')
         {
             playerSide = eBlackChess;
+            enemySide = eWhiteChess;
             break;
         }
         else
             std::cout << "Your enter invalid choise!" << std::endl;
     }
 
-    Field chessField[8][8] = {};
+    const int length = 8;
+    Field chessField[length][length] = {};
 
+    for (int i = 0; i < 3; ++i)
+    {
+        int y;
+        for (y = 0; y < length; ++y)
+        {
+            if ((i % 2 != 0) && (y % 2 != 0))
+            {
+                chessField[i][y] = enemySide;
+            }
+        }
+    }
+
+    for (int i = 0; i < 3; ++i)
+    {
+        int y;
+        for (y = 0; y < length; ++y)
+        {
+            if ((i % 2 == 0) && (y % 2 == 0))
+            {
+                chessField[i][y] = enemySide;
+            }
+        }
+    }
+
+
+    for (int i = length; i > 3; --i)
+    {
+        int y;
+        for (y = length; y < 0; --y)
+        {
+            if ((i % 2 != 0) && (y % 2 != 0))
+            {
+                chessField[i][y] = playerSide;
+            }
+        }
+    }
+
+    for (int i = length; i > 3; --i)
+    {
+        int y;
+        for (y = length; y > 0; --y)
+        {
+            if ((i % 2 == 0) && (y % 2 == 0))
+            {
+                chessField[i][y] = playerSide;
+            }
+        }
+    }
+
+  
     std::cout << std::format(R"(
      A     B     C     D     E     F     G     H
   #################################################
