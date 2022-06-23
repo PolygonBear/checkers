@@ -119,16 +119,46 @@ int main()
         
         std::cin >> targetField;
         
-        if (targetField.length() == 2 && (targetField[0] >= 'a' && targetField[0] <= 'h') && (targetField[1] >= '1' && targetField[1] <= '8'))
+        switch (targetField[1])
         {
-            chessField[targetField[0]][targetField[1]];
+        case '1':
+            targetField[1] = 56;
+            break;
+        case '2':
+            targetField[1] = 55;
+            break;
+        case '3':
+            targetField[1] = 54;
+            break;
+        case '4':
+            targetField[1] = 53;
+            break;
+        case '5':
+            targetField[1] = 52;
+            break;
+        case '6':
+            targetField[1] = 51;
+            break;
+        case '7':
+            targetField[1] = 50;
+            break;
+        case '8':
+            targetField[1] = 49;
+            break;
+        default:
+            break;
+        }
+
+        if (targetField.length() == 2 && (targetField[0] >= 'a' && targetField[0] <= 'h'))
+        {
+            chessField[static_cast<int>(targetField[0]) - 97][targetField[1]];
 
             std::cout << chessField[static_cast<int>(targetField[0]) - 97][static_cast<int>(targetField[1]) - 49];
             break;
         }
         else if (targetField.length() == 2 && (targetField[0] >= 'A' && targetField[0] <= 'H') && (targetField[1] >= '1' && targetField[1] <= '8'))
         {
-            chessField[targetField[0]][targetField[1]];
+            chessField[static_cast<int>(targetField[0]) - 65][targetField[1]];
 
             std::cout << chessField[static_cast<int>(targetField[0]) - 65][static_cast<int>(targetField[1]) - 49];
             break;
