@@ -124,32 +124,34 @@ int main()
         Field currentField = Field::eEmpty;
         
         std::cin >> firstSelectField;
+
+        int x1, y1 = 0;
         
         switch (firstSelectField[1])
         {
         case '1':
-            firstSelectField[1] = 56;
+            x1 = 7;
             break;
         case '2':
-            firstSelectField[1] = 55;
+            x1 = 6;
             break;
         case '3':
-            firstSelectField[1] = 54;
+            x1 = 5;
             break;
         case '4':
-            firstSelectField[1] = 53;
+            x1 = 4;
             break;
         case '5':
-            firstSelectField[1] = 52;
+            x1 = 3;
             break;
         case '6':
-            firstSelectField[1] = 51;
+            x1 = 2;
             break;
         case '7':
-            firstSelectField[1] = 50;
+            x1 = 1;
             break;
         case '8':
-            firstSelectField[1] = 49;
+            x1 = 0;
             break;
         default:
             break;
@@ -157,13 +159,15 @@ int main()
 
         if (firstSelectField.length() == 2 && (firstSelectField[0] >= 'a' && firstSelectField[0] <= 'h'))
         {
-            currentField = chessField[static_cast<int>(firstSelectField[0]) - 97][firstSelectField[1]];
+            y1 = static_cast<int>(firstSelectField[0] - 97);
+            currentField = chessField[x1][y1];
            
            
         }
         else if (firstSelectField.length() == 2 && (firstSelectField[0] >= 'A' && firstSelectField[0] <= 'H') && (firstSelectField[1] >= '1' && firstSelectField[1] <= '8'))
         {
-            currentField = chessField[static_cast<int>(firstSelectField[0]) - 65][firstSelectField[1]];
+            y1 = static_cast<int>(firstSelectField[0] - 65);
+            currentField = chessField[x1][y1];
 
             
         }
@@ -175,32 +179,35 @@ int main()
         Field targetField = Field::eEmpty;
 
         std::cin >> secondSelectField;
+        int x2, y2 = 0;
+
+        
       
         switch (secondSelectField[1])
         {
         case '1':
-            secondSelectField[1] = 55;
+            x2 = 7;
             break;
         case '2':
-            secondSelectField[1] = 54;
+            x2 = 6;
             break;
         case '3':
-            secondSelectField[1] = 53;
+            x2 = 5;
             break;
         case '4':
-            secondSelectField[1] = 52;
+            x2 = 4;
             break;
         case '5':
-            secondSelectField[1] = 51;
+            x2 = 3;
             break;
         case '6':
-            secondSelectField[1] = 50;
+            x2 = 2;
             break;
         case '7':
-            secondSelectField[1] = 49;
+            x2 = 1;
             break;
         case '8':
-            secondSelectField[1] = 48;
+            x2 = 0;
             break;
         default:
             break;
@@ -208,22 +215,23 @@ int main()
 
         if (secondSelectField.length() == 2 && (secondSelectField[0] >= 'a' && secondSelectField[0] <= 'h'))
         {
-
-            targetField = chessField[static_cast<int>(secondSelectField[0]) - 97][secondSelectField[1]];
+            y2 = static_cast<int>(secondSelectField[0]) - 97;
+            targetField = chessField[x2][y2];
 
            
         }
         else if (secondSelectField.length() == 2 && (secondSelectField[0] >= 'A' && secondSelectField[0] <= 'H') && (secondSelectField[1] >= '1' && secondSelectField[1] <= '8'))
         {
-            targetField = chessField[static_cast<int>(secondSelectField[0]) - 65][secondSelectField[1]];
+            y2 = static_cast<int>(secondSelectField[0]) - 65;
+            targetField = chessField[x2][y2];
 
            
         }
 
         if (currentField == playerSide && targetField == Field::eEmpty)
         {
-            currentField = Field::eEmpty;
-            targetField = playerSide;
+            chessField[x1][y1] = Field::eEmpty;
+            chessField[x2][y2] = playerSide;
         }
 
         std::cout << "Your side: " << (playerSide == Field::eWhiteChess ? "White" : "Black") << std::endl << std::format(R"(
